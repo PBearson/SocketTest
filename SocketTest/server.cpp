@@ -2,8 +2,6 @@
 #include <WS2tcpip.h>
 #include "headers.h"
 
-#pragma comment (lib, "ws2_32.lib")
-
 int run_server()
 {
 	// Initialize winsock
@@ -77,15 +75,15 @@ int run_server()
 
 	// Send welcome message to client
 	char buf[4096];
-	memset(buf, 0, 4096);
+	/*memset(buf, 0, 4096);
 	sprintf_s(buf, "Hello from %s:%d\n", server_addr_s, ntohs(server_addr.sin_port));
 
 	int bytes_sent = send(client_sock, buf, 32, 0);
 	if (bytes_sent == SOCKET_ERROR)
 	{
 		return fail("send", WSAGetLastError());
-	}
-	printf("Echoed %s\n", buf);
+	}*/
+	//printf("Echoed %s\n", buf);
 
 	// while loop: accept and echo message back to client
 	while (true)
@@ -94,6 +92,7 @@ int run_server()
 
 		// Wait for client to send data
 		int bytes_received = recv(client_sock, buf, 4096, 0);
+
 		if (bytes_received == SOCKET_ERROR)
 		{
 			return fail("recv", WSAGetLastError());
