@@ -119,7 +119,7 @@ int main()
 		printf("Echoed %s\n", buf);
 	}
 
-	// Cloose sock
+	// Close socket
 	closesocket(client_sock);
 
 	// Cleanup (close) winsock
