@@ -82,9 +82,10 @@ int main()
 
 	// Send welcome message to client
 	char buf[4096];
-	sprintf_s(buf, "Hello from %s:%d\n\x00", server_addr_s, ntohs(server_addr.sin_port));
+	memset(buf, 0, 4096);
+	sprintf_s(buf, "Hello from %s:%d\n", server_addr_s, ntohs(server_addr.sin_port));
 
-	int bytes_sent = send(client_sock, buf, 128, 0);
+	int bytes_sent = send(client_sock, buf, 32, 0);
 	if (bytes_sent == SOCKET_ERROR)
 	{
 		return fail("send", WSAGetLastError());
