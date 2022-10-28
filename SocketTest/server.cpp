@@ -1,15 +1,10 @@
 #include <iostream>
 #include <WS2tcpip.h>
+#include "headers.h"
 
 #pragma comment (lib, "ws2_32.lib")
 
-int fail(const char* rtn, int code)
-{
-	printf("%s failed with error %d\n", rtn, code);
-	return code;
-}
-
-int main()
+int run_server()
 {
 	// Initialize winsock
 	WSADATA data;
